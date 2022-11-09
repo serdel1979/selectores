@@ -3,12 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'page',
+    path: 'selector',
     loadChildren: () => import('./paises/pais.module').then(m=>m.PaisModule)
   },
   {
     path: '**',
-    redirectTo:'page'
+    redirectTo:'selector'
   }
 ];
 
