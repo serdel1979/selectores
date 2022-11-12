@@ -3,17 +3,33 @@
 
 <form [formGroup]="miFormulario" (ngSubmit)="guardar()">
    
+    <!-- Regio -->
     <div class="row mb-3">
         <div class="col">
             <label class="form-label">Continente</label>
             <select class="form-control"
                 formControlName="region">
                 <option value=""> -- Seleccione Continente -- </option>
-                <option *ngFor="let region of regiones; let i = index" [value]="region | lowercase"> {{ region }} </option>
+                <option *ngFor="let region of regiones" [value]="region | lowercase"> {{ region }} </option>
             </select>
         </div>
     </div>
     
+    <!-- Paises -->
+    <div class="row mb-3">
+        <div class="col">
+            <label class="form-label">Pais</label>
+            <select class="form-control"
+                formControlName="pais">
+                <option value=""> -- Seleccione País -- </option>
+                <option *ngFor="let pais of paises"
+                [value]="pais.cca3">
+                        {{pais.name['common']}}
+            </select>
+        </div>
+    </div>
+
+
     <div class="row">
         <div class="col">
             <button class="btn btn-primary float-end"
@@ -29,3 +45,4 @@
 
 <pre>Valid: {{ miFormulario.valid }}</pre>
 <pre>Value: {{ miFormulario.value | json }}</pre>
+
