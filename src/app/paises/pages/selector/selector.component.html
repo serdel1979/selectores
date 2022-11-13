@@ -16,7 +16,7 @@
     </div>
     
     <!-- Paises -->
-    <div class="row mb-3">
+    <div class="row mb-3" *ngIf="paises.length !== 0">
         <div class="col">
             <label class="form-label">Pais</label>
             <select class="form-control"
@@ -24,11 +24,34 @@
                 <option value=""> -- Seleccione País -- </option>
                 <option *ngFor="let pais of paises"
                 [value]="pais.cca3">
-                        {{pais.name['common']}}
+                        {{pais.name['common']}} </option>
             </select>
         </div>
     </div>
 
+     <!-- Fronteras -->
+     <div class="row mb-3" *ngIf="frontera.length !== 0">
+        <div class="col">
+            <label class="form-label">Frontera</label>
+            <select class="form-control"
+                formControlName="frontera"
+                
+                >
+                <option value=""> -- Seleccione País fronterizo -- </option>
+               <option *ngFor="let front of frontera"
+                [value]="front">
+                        {{front}} </option> 
+            </select>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="cargando">
+        <div class="col">
+            <div class="alert alert-primary">
+                Cargando...
+            </div>
+        </div>
+    </div>
 
     <div class="row">
         <div class="col">
@@ -45,4 +68,7 @@
 
 <pre>Valid: {{ miFormulario.valid }}</pre>
 <pre>Value: {{ miFormulario.value | json }}</pre>
+
+<h3>Arreglo de frontera</h3>
+<pre>{{ frontera | json}}</pre>
 
